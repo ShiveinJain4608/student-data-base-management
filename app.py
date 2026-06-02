@@ -53,4 +53,18 @@ if code:
     except:
         pass
     
-    
+    if page == "🏠 Home":
+    st.title("🐍 Python Code Explainer Dashboard")
+    st.write(
+        "Upload a Python file and explore its code and explanations."
+    )
+
+elif page == "💻 Source Code":
+    st.title("💻 Source Code")
+
+    if code:
+        st.code(code, language="python")
+    else:
+        st.warning("Please upload a Python file.")
+
+
