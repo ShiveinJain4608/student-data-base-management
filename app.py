@@ -19,3 +19,38 @@ page = st.sidebar.radio(
     "▶️ Run Game"
 ]
 )
+
+uploaded_file = st.sidebar.file_uploader(
+    "Upload Python File",
+    type=["py"]
+)
+
+code = ""
+
+if uploaded_file is not None:
+    code = uploaded_file.read().decode("utf-8")
+    functions = 0
+imports = 0
+lines = 0
+
+if code:
+    lines = len(code.splitlines())
+
+    try:
+        tree = ast.parse(code)
+
+        for node in ast.walk(tree):
+
+            if isinstance(node, ast.FunctionDef):
+                functions += 1
+
+            elif isinstance(node, ast.Import):
+                imports += len(node.names)
+
+            elif isinstance(node, ast.ImportFrom):
+                imports += 1
+
+    except:
+        pass
+    
+    
