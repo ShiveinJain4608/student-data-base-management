@@ -53,7 +53,7 @@ if code:
     except:
         pass
     
-    if page == "🏠 Home":
+     if page == "🏠 Home":
     st.title("🐍 Python Code Explainer Dashboard")
     st.write(
         "Upload a Python file and explore its code and explanations."
